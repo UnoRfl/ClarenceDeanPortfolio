@@ -18,3 +18,4 @@ valorant.json
 download-gallery.mjs
 refine-css.mjs
 *.tmp
+.staging/

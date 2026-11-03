@@ -4,7 +4,7 @@ These photographs and illustrations are a curated inspiration gallery, not work 
 
 ## Capybaras
 
-- [Capybara (Hydrochoerus hydrochaeris) alpha male](https://commons.wikimedia.org/w/index.php?curid=44254294) — Charles J. Sharp, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- [A capybara in golden hour sunlight](https://unsplash.com/photos/a-capybara-in-golden-hour-sunlight-fMv5yNHoLWk) — Rafael Hoyos Weht, [Unsplash License](https://unsplash.com/license).
 - [Capybara portrait 2](https://commons.wikimedia.org/w/index.php?curid=32344493) — Smabs Sputzer, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
 - [Capybara swimming](https://commons.wikimedia.org/w/index.php?curid=85334252) — Bob Johnson, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 - [Capybara Eating Hay 11 11 2018](https://commons.wikimedia.org/w/index.php?curid=112395009) — Eric Kilby, [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).
@@ -14,7 +14,7 @@ These photographs and illustrations are a curated inspiration gallery, not work 
 
 ## Competitive gaming
 
-- [Newegg-gamer-zone-1](https://commons.wikimedia.org/wiki/File:Newegg-gamer-zone-1.jpg) — Masterandbeef, [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
+- [A living room with a large television and neon lights](https://unsplash.com/photos/a-living-room-with-a-large-television-and-neon-lights-LKGNbWDyKuo) — Branden Skeli, [Unsplash License](https://unsplash.com/license).
 - [1st SOPS prevails in esports championship (4725559)](https://commons.wikimedia.org/wiki/File:1st_SOPS_prevails_in_esports_championship_(4725559).jpg) — U.S. Air Force photo by Airman William Tracy, [public domain](https://creativecommons.org/publicdomain/mark/1.0/).
 - [FACEIT Major London 2018 - IMG 0023 (44556713194)](https://commons.wikimedia.org/wiki/File:FACEIT_Major_London_2018_-_IMG_0023_(44556713194).jpg) — Esports Kingdom, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0).
 - [T1 Base Camp PC bang interior - 2023-07-21](https://commons.wikimedia.org/wiki/File:T1_Base_Camp_PC_bang_interior_-_2023-07-21.jpg) — Wvdp, [CC0](https://creativecommons.org/publicdomain/zero/1.0/deed.en).
@@ -49,6 +49,5 @@ These photographs and illustrations are a curated inspiration gallery, not work 
 - [Tesla Model S, Geneva 2014](https://commons.wikimedia.org/wiki/File:Tesla_Model_S,_Geneva_2014.jpg) — Ank Kumar, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
 - [Black Tesla Model S on N Jones Blvd](https://commons.wikimedia.org/wiki/File:Black_Tesla_Model_S_on_N_Jones_Blvd.jpg) — Noah Wulf, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
 - [Tesla Model S at a Supercharger station](https://commons.wikimedia.org/wiki/File:Tesla_Model_S_at_a_Supercharger_station.jpeg) — Jusdafax, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0).
-- [Tesla Model 3 charging, Windsor, Ontario, 2025-05-31](https://commons.wikimedia.org/wiki/File:Tesla_Model_3_charging,_Windsor,_Ontario,_2025-05-31.jpg) — Crisco 1492, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
+- [Tesla Model S in an urban alley](https://unsplash.com/pt-br/fotografias/um-tesla-preto-estacionado-em-um-estacionamento-JAQLPuJYAs8) — Daniel Shapiro, [Unsplash License](https://unsplash.com/license).
 - [Tesla Model 3 with custom wheels - 01](https://commons.wikimedia.org/wiki/File:Tesla_Model_3_with_custom_wheels_-_01.jpg) — Oleg Yunakov, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0).
-
