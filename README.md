@@ -1,16 +1,11 @@
 # Clarence Dean Argana Abeleda — Portfolio
 
-A responsive static portfolio for Clarence, a BSIT student at the University of Perpetual Help. The visual direction uses warm amber, caramel and espresso tones, with a split editorial layout inspired by the DeVilla and DeLeon portfolio projects.
+A static portfolio built from the DeVilla portfolio template: the same left navigation, image-led hero, filterable masonry gallery, About page composition, Contact page composition, Montserrat typography, responsive breakpoints, lightbox, and page transitions. The accent colors are warm amber and caramel brown.
 
 ## Pages
 
-- `/home/` — filterable gallery of 35 images across five interests, with a click-to-enlarge viewer
-- `/about/` — introduction, interests and long-term game-development goal
-- `/contact/` — email, phone, course and school
-- `/credits/` — source and license attribution for every gallery image
+- `/home/` — 35 credited images across five interests
+- `/about/` — introduction, goal, and hobbies
+- `/contact/` — email, phone, course, and school
 
-The gallery is an inspiration collection, not a claim that Clarence created the images. Each image opens its source and carries a creator/license credit. More complete attribution details are in [CREDITS.md](CREDITS.md). The site is plain HTML, CSS and JavaScript with no build dependencies. `build-site.mjs` regenerates the pages from the image manifest.
-
-## Publishing
-
-GitHub Pages serves the repository root from the `main` branch.
+The gallery is an inspiration collection, not a claim that Clarence created the images. See [CREDITS.md](CREDITS.md) for source and license details. The site is static HTML, CSS, and JavaScript. GitHub Pages serves the repository root from `main`.

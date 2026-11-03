@@ -1,65 +1,105 @@
-(() => {
-  const motionTargets = [...document.querySelectorAll('.home-intro h1,.home-intro p,.home-intro a,.section-heading h2,.section-heading p,.filters .filter-button,.gallery-item,.editorial-page h1,.editorial-page p,.editorial-page h2,.contact-details>div,.editorial-page .button,.site-footer')];
-  if (motionTargets.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('motion-ready');
-    motionTargets.forEach((element,index) => {
-      element.dataset.motion = 'rise';
-      element.style.setProperty('--motion-delay', `${(index % 5) * 65}ms`);
-    });
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.dataset.visible = 'true';
+(function () {
+  'use strict';
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  root.classList.add('has-js');
+
+  // Reveal each image and its text as it enters the viewport. Content stays visible without script.
+  const revealItems = document.querySelectorAll('[data-reveal]');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    revealItems.forEach(function (item) { item.classList.add('revealed'); });
+  } else {
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('revealed');
         observer.unobserve(entry.target);
-      }
-    }), { threshold: 0.06, rootMargin: '0px 0px -4% 0px' });
-    motionTargets.forEach(element => observer.observe(element));
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+    revealItems.forEach(function (item, index) {
+      item.style.transitionDelay = (Math.min(index % 5, 4) * 45) + 'ms';
+      revealObserver.observe(item);
+    });
   }
 
-  const filters = [...document.querySelectorAll('.filter-button')];
-  const items = [...document.querySelectorAll('.gallery-item')];
-  filters.forEach(button => button.addEventListener('click', () => {
-    const selected = button.dataset.filter;
-    filters.forEach(filter => {
-      const active = filter === button;
-      filter.classList.toggle('active', active);
-      filter.setAttribute('aria-pressed', String(active));
+  // Narrow-screen navigation.
+  const menuButton = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.nav');
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', function () {
+      const open = menuButton.getAttribute('aria-expanded') !== 'true';
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      nav.classList.toggle('open', open);
     });
-    items.forEach(item => { item.hidden = selected !== 'all' && item.dataset.category !== selected; });
-  }));
+  }
 
-  const dialog = document.querySelector('.lightbox');
-  if (!dialog) return;
-  const image = dialog.querySelector('figure img');
-  const title = dialog.querySelector('.lightbox-title');
-  const credit = dialog.querySelector('.lightbox-credit');
-  const source = dialog.querySelector('.lightbox-source');
-  let current = 0;
-  const visibleItems = () => items.filter(item => !item.hidden);
-  const show = (item) => {
-    if (!item) return;
-    current = visibleItems().indexOf(item);
-    const preview = item.querySelector('img');
-    image.src = preview.currentSrc || preview.src;
-    image.alt = preview.alt;
-    title.textContent = item.dataset.title;
-    credit.textContent = item.dataset.credit;
-    source.href = item.dataset.source;
-    if (!dialog.open) dialog.showModal();
-  };
-  items.forEach(item => item.addEventListener('click', () => show(item)));
-  const step = direction => {
-    const list = visibleItems();
-    if (!list.length) return;
-    current = (current + direction + list.length) % list.length;
-    show(list[current]);
-  };
-  dialog.querySelector('.lightbox-close').addEventListener('click', () => dialog.close());
-  dialog.querySelector('.previous').addEventListener('click', () => step(-1));
-  dialog.querySelector('.next').addEventListener('click', () => step(1));
-  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  document.addEventListener('keydown', event => {
-    if (!dialog.open) return;
-    if (event.key === 'ArrowLeft') step(-1);
-    if (event.key === 'ArrowRight') step(1);
+  // Filter the credited image collection.
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+  filterButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const category = button.dataset.filter;
+      filterButtons.forEach(function (item) {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      galleryItems.forEach(function (item) {
+        item.hidden = category !== 'all' && item.dataset.category !== category;
+      });
+    });
   });
+
+  // Native dialog lightbox with keyboard and previous/next controls.
+  const dialog = document.querySelector('.lightbox');
+  if (dialog && galleryItems.length) {
+    const image = dialog.querySelector('figure img');
+    const title = dialog.querySelector('.lightbox-title');
+    const source = dialog.querySelector('.lightbox-source');
+    let activeIndex = 0;
+    const visibleItems = function () { return galleryItems.filter(function (item) { return !item.hidden; }); };
+    const show = function (index) {
+      const items = visibleItems();
+      activeIndex = (index + items.length) % items.length;
+      const item = items[activeIndex];
+      image.src = item.dataset.image;
+      image.alt = item.querySelector('img').alt;
+      title.textContent = item.dataset.title + ' · ' + item.dataset.credit;
+      source.href = item.dataset.source;
+      source.textContent = 'View original source ↗';
+    };
+    galleryItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        const items = visibleItems();
+        show(items.indexOf(item));
+        dialog.showModal();
+        dialog.querySelector('.lightbox-close').focus();
+      });
+    });
+    dialog.querySelector('.lightbox-close').addEventListener('click', function () { dialog.close(); });
+    dialog.querySelector('.previous').addEventListener('click', function () { show(activeIndex - 1); });
+    dialog.querySelector('.next').addEventListener('click', function () { show(activeIndex + 1); });
+    dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') show(activeIndex - 1);
+      if (event.key === 'ArrowRight') show(activeIndex + 1);
+    });
+  }
+
+  // Short page transition fallback for browsers without cross-document View Transitions.
+  if (!('onpagereveal' in window) && !reducedMotion) {
+    root.classList.add('fallback-vt');
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a');
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.target === '_blank' || link.hasAttribute('download') || !link.href || new URL(link.href).origin !== location.origin) return;
+      if (link.pathname === location.pathname && link.hash) return;
+      event.preventDefault();
+      root.classList.add('leaving');
+      window.setTimeout(function () { location.href = link.href; }, 190);
+    });
+    window.addEventListener('pageshow', function (event) { if (event.persisted) root.classList.remove('leaving'); });
+  }
 })();
