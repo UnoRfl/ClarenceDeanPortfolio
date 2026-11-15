@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/assets/banner.png" alt="ClarenceDeanPortfolio banner" width="100%"></p>
+
 # Clarence Dean Argana Abeleda — Portfolio
 
 A static portfolio built from the DeVilla portfolio template: the same left navigation, image-led hero, filterable masonry gallery, About page composition, Contact page composition, Montserrat typography, responsive breakpoints, lightbox, and page transitions. The accent colors are warm amber and caramel brown.
